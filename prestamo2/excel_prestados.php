@@ -29,8 +29,54 @@ if($id==0){
     WHERE alumno.rut_alumno = prestamo2.det_alumno AND equipo.id_equipo = prestamo2.det_equipo AND docente.rut_docente = prestamo2.det_docente
     AND prestamo2.id_prestamo = entrega.det_prestamo
     ORDER BY prestamo2.id_prestamo DESC";
-    $texto = "Detalle de prestamo";
-    
+    $texto = "Detalle de prestamos";
+
+?>
+    <table border="1">
+    <tbody>
+    <tr>
+    <td>Equipo Solicitado</td>
+    <td>Rut Estudiante</td>
+    <td>Nombre Estudiante</td>
+    <td>Correo electronico del Estudiante</td>
+    <td>Rut Docente</td>
+    <td>Nombre Docente</td>
+    <td>Asignatura</td>
+    <td>Actividad</td>
+    <td>Fecha solicitud de equipo</td>
+    <td>Observaciones de Entrega</td>
+    <td>Fecha de devolucion</td>
+    <td>Observaciones de devoluci&oacute;n</td>
+    </tr>
+    <?php
+    if($q = $conexion->mysqli->query($prestamos)) {
+        while($datos=$q->fetch_object()):
+    ?>
+    <tr>
+    <td><center><?=$datos->NEQ." ".$datos->DET?></td>
+    <td><center><?=$datos->RUT?></td>
+    <td><center><?=utf8_decode($datos->NA)." ".utf8_decode($datos->APA)." ".utf8_decode($datos->AMA)?></td>
+    <td><center><?=utf8_decode($datos->CONTACTO)?></center></td>
+    <td><center><?=$datos->IDO?></td>
+    <td><center><?=utf8_decode($datos->NDO)." ".utf8_decode($datos->APD)." ".utf8_decode($datos->AMD)?></center></td>
+    <td><center><?=utf8_decode($datos->ASIG)?></center></td>
+    <td><center><?=utf8_decode($datos->ACTI)?></center></td>
+    <td><center><?=utf8_decode($datos->SOLI)?></center></td>
+    <td><center><?=utf8_decode($datos->OBSERV)?></center></td>
+    <td><center><?=utf8_decode($datos->ENTREG)?></center></td>
+    <td><center><?=utf8_decode($datos->OBSE)?></center></td>
+    </tr>
+    <?php
+    endwhile;
+    }
+    else {
+        print_r(json_encode(array("error" => $conexion->mysqli->error)));
+        exit();
+    }
+    ?>
+    </tbody>
+    </table>
+<?php
 }else{
     
     $prestamos = "select alumno.rut_alumno as RUT, alumno.n_alumno as NA, alumno.app_alumno as APA, alumno.apm_alumno AS AMA,
@@ -44,63 +90,64 @@ if($id==0){
     ORDER BY prestamo2.id_prestamo DESC";
     $texto = "Datos del Prestamo";
 
+    
+    ?>
+    <table border="1">
+    <tbody>
+    <?php
+    if($q = $conexion->mysqli->query($prestamos)) {
+        while($datos=$q->fetch_object()):
+    ?>
+    <tr>
+    <th colspan="2">
+    <h5><?=$texto?></h5>
+    </th>
+    </tr>
+    <tr>
+    <th colspan="2">
+    <h5>Detalle del equipo: <?=$datos->NEQ." ".$datos->DET?></h5>
+    </th>
+    </tr>
+    <tr>
+    <td>Datos Estudiante</td>
+    <td><center><?=$datos->RUT." ".utf8_decode($datos->NA)." ".utf8_decode($datos->APA)." ".utf8_decode($datos->AMA)?></td>
+    </tr>
+    <tr>
+    <td>Correo electronico del Estudiante</td>
+    <td><center><?=utf8_decode($datos->CONTACTO)?></center></td>
+    </tr>
+    <tr>
+    <td>Datos Docente</td>
+    <td><center><?=$datos->IDO." ".utf8_decode($datos->NDO)." ".utf8_decode($datos->APD)." ".utf8_decode($datos->AMD)?></center></td>
+    </tr>
+    <tr>
+    <td>Detalle actividad</td>
+    <td><center><?="Asignatura: ".utf8_decode($datos->ASIG)."; Actividad: ".utf8_decode($datos->ACTI)?></center></td>
+    </tr>
+    <tr>
+    <td>Fecha solicitud de equipo</td>
+    <td><center><?=utf8_decode($datos->SOLI)?></center></td>
+    </tr>
+    <tr>
+    <td>Observaciones</td>
+    <td><center><?=utf8_decode($datos->OBSERV)?></center></td>
+    </tr>
+    <tr>
+    <td>Fecha de devolucion</td>
+    <td><center><?=utf8_decode($datos->ENTREG)?></center></td>
+    </tr>
+    <tr>
+    <td>Observaciones de entrega</td>
+    <td><center><?=utf8_decode($datos->OBSE)?></center></td>
+    </tr>
+    <?php
+    endwhile;
+    }
+    else {
+        print_r(json_encode(array("error" => $conexion->mysqli->error)));
+        exit();
+    }
 }
-
-
-?>
-<table border="1">
-<tbody>
-<?php
-if($q = $conexion->mysqli->query($prestamos)) {
-    while($datos=$q->fetch_object()):
-?>
-<tr>
-<th colspan="2">
-<h2><?=$texto?></h2>
-</th>
-</tr>
-<tr>
-<td>Datos Estudiante</td>
-<td><center><?=$datos->RUT." ".$datos->NA." ".$datos->APA?></td>
-</tr>
-<tr>
-<td>Correo electronico del Estudiante</td>
-<td><center><?=$datos->CONTACTO?></center></td>
-</tr>
-<tr>
-<td>Datos Docente</td>
-<td><center><?=$datos->IDO." ".$datos->NDO." ".$datos->APD." ".$datos->AMD?></center></td>
-</tr>
-<tr>
-<td>Detalle actividad</td>
-<td><center><?="Asignatura: ".$datos->ASIG."; Actividad: ".$datos->ACTI?></center></td>
-</tr>
-<tr>
-<td>Fecha solicitud de equipo</td>
-<td><center><?=$datos->SOLI?></center></td>
-</tr>
-<tr>
-<td>Observaciones</td>
-<td><center><?=$datos->OBSERV?></center></td>
-</tr>
-<tr>
-<td>Fecha de devolucion</td>
-<td><center><?=$datos->ENTREG?></center></td>
-</tr>
-<tr>
-<td>Observaciones de entrega</td>
-<td><center><?=$datos->OBSE?></center></td>
-</tr>
-<?php
-endwhile;
-}
-else {
-    print_r(json_encode(array("error" => $conexion->mysqli->error)));
-    exit();
-}
-?>
-</tbody>
-<th colspan="2">
-<h2>Enfermeria</h2>
-</th>
-</table>
+    ?>
+    </tbody>
+    </table>

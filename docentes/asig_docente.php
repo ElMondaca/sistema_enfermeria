@@ -93,9 +93,13 @@ if($q = $conexion->mysqli->query($query)) {
       </div>
     </form>
   </div>
+
   <div class="col-lg-12" id="actividades_doc" name="actividades_doc">
 
 
+  </div>
+  <div class="col-lg-12" id="boton-descarga">
+  <a href="excel_part.php?id=<?=$datos->rut_docente?>"><button class="btn btn-primary" id="excel">Descargar Información</button></a>    
   </div>
 </div>
 
