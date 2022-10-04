@@ -16,29 +16,30 @@ ORDER BY prestamo2.id_prestamo DESC";
 if($q = $conexion->mysqli->query($prestamos)) {
 			while($datos=$q->fetch_object()):
         ?>
-      	<div class="bs-component">
-      			<div class="panel panel-primary">
-      				<div class="panel-heading">
-      					<h3 class="panel-title">Detalle del prestamo</h3>
-      				</div>
-      				<div class="panel-body">
-					  	<p>Datos Estudiante: <?=$datos->RUT." ".$datos->NA." ".$datos->APA?></p>
-		              	<p>Correo electronico del Estudiante: <?=$datos->CONTACTO?></p>
-      					<p>Datos Docente: <?=$datos->IDO." ".$datos->NDO." ".$datos->APD." ".$datos->AMD?></p>
-      					<p>Detalle actividad: <?="Asignatura: ".$datos->ASIG."; Actividad: ".$datos->ACTI?></p>
-      					<p>Fecha solicitud de equipo: <?=$datos->SOLI?></p>
-      					<p>Observaciones: <?=$datos->OBSERV?></p>
-      					<p>Estado del prestamo: <?=$datos->ESTADO?></p>
-      					<p>Fecha de devolucion: <?=$datos->ENTREG?></p>
-      					<p>Observaciones de entrega: <?=$datos->OBSE?></p>
-      				</div>
-      			</div>
-      		</div>
-      <?php
-      	endwhile;
-      	}
-      	else {
-      						print_r(json_encode(array("error" => $conexion->mysqli->error)));
-      						exit();
-      					}
+	<div class="bs-component">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h3 class="panel-title">Detalle del prestamo</h3>
+				</div>
+				<div class="panel-body">
+					<p>Datos Estudiante: <?=$datos->RUT." ".$datos->NA." ".$datos->APA?></p>
+					<p>Correo electronico del Estudiante: <?=$datos->CONTACTO?></p>
+					<p>Datos Docente: <?=$datos->IDO." ".$datos->NDO." ".$datos->APD." ".$datos->AMD?></p>
+					<p>Detalle actividad: <?="Asignatura: ".$datos->ASIG."; Actividad: ".$datos->ACTI?></p>
+					<p>Fecha solicitud de equipo: <?=$datos->SOLI?></p>
+					<p>Observaciones: <?=$datos->OBSERV?></p>
+					<p>Estado del prestamo: <?=$datos->ESTADO?></p>
+					<p>Fecha de devolucion: <?=$datos->ENTREG?></p>
+					<p>Observaciones de entrega: <?=$datos->OBSE?></p>
+					<a href="excel_prestados.php?id=<?=$datos->IDP?>"><button class="btn btn-primary" id="excel">Descargar Información</button></a>
+				</div>
+			</div>
+		</div>
+	<?php
+	endwhile;
+	}
+	else {
+		print_r(json_encode(array("error" => $conexion->mysqli->error)));
+		exit();
+	}
 ?>

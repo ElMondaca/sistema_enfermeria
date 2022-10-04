@@ -25,6 +25,9 @@
           </div>
           <div class="col-lg-12">
             <legend>Prestamos Entregados</legend>
+            <div class="col-lg-12" id="boton">
+            <a href="excel_prestados.php?id=0"><button class="btn btn-primary" id="excel">Generar Excel</button></a></br>
+            </div>
             <div class="col-lg-12" id="entregados">
             </div>
           </div>
@@ -38,6 +41,9 @@
                 			});
 
                     });
+</script>
+<script>
+
 </script>
 <script src="js/bootstrap.min.js"></script>
 

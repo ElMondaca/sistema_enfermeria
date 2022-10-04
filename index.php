@@ -71,62 +71,62 @@ require_once('include/nav.php');
         <script>
 
 $(document).ready(function() {
-        $("#abrir_registro").click(function() {
-                  $("#modal_registro").modal();
-              });
+  $("#abrir_registro").click(function() {
+      $("#modal_registro").modal();
+  });
 
-        $("#abrir_equipo").click(function() {
-                  $("#modal_equipo").modal();
-              });
+  $("#abrir_equipo").click(function() {
+      $("#modal_equipo").modal();
+  });
 
-              $("#registro_e").click(function(){
-                $.ajax({
-               		type: "POST",
-               		url: "ajax/registro_e.php",
-               		data: "id_equipo=" + $("#id_equipo").val() +
-                  '&n_equipo=' + $("#n_equipo").val() +
-                  '&det_equipo=' + $("#det_equipo").val() +
-                  '&observ_equipo=' + $("#observ_equipo").val() +
-                  '&tipo_equipo=' + $("#tipo_equipo").val(),
-               		success: function(data) {
-               		if(data.success) {
-               					$("#registro_mensaje").html("<h1>Registrado correctamente</h1>");
-               		}
-                  	else {
-                 				$("#registro_mensaje").html("<h1>Ha ocurrido un error</h1>");
-                 	}
-                 	},
-                 	error: function(data){
-                 	console.log(data);
-                 	}
-                 });
-               });
+$("#registro_e").click(function(){
+  $.ajax({
+    type: "POST",
+    url: "ajax/registro_e.php",
+    data: "id_equipo=" + $("#id_equipo").val() +
+    '&n_equipo=' + $("#n_equipo").val() +
+    '&det_equipo=' + $("#det_equipo").val() +
+    '&observ_equipo=' + $("#observ_equipo").val() +
+    '&tipo_equipo=' + $("#tipo_equipo").val(),
+    success: function(data) {
+    if(data.success) {
+          $("#registro_mensaje").html("<h1>Registrado correctamente</h1>");
+    }
+      else {
+          $("#registro_mensaje").html("<h1>Ha ocurrido un error</h1>");
+    }
+    },
+    error: function(data){
+    console.log(data);
+    }
+    });
+  });
 
-        $("#registro_a").click(function(){
-       		$.ajax({
-         		type: "POST",
-         		url: "ajax/registro.php",
-         		data: "rut_usuario=" + $("#rut_usuario").val() +
-            '&nombre_usuario=' + $("#nombre_usuario").val() +
-             '&app_usuario=' + $("#app_usuario").val() +
-             '&apm_usuario=' + $("#apm_usuario").val(),
-         		success: function(data) {
-         		if(data.success) {
-         					$("#registro_mensaje").html("<h1>Registrado correctamente</h1>");
-         		}
-            	else {
-           				$("#registro_mensaje").html("<h1>Ha ocurrido un error</h1>");
-           	}
-           	},
-           	error: function(data){
-           	console.log(data);
-           	}
-           });
-         });
+  $("#registro_a").click(function(){
+    $.ajax({
+      type: "POST",
+      url: "ajax/registro.php",
+      data: "rut_usuario=" + $("#rut_usuario").val() +
+      '&nombre_usuario=' + $("#nombre_usuario").val() +
+        '&app_usuario=' + $("#app_usuario").val() +
+        '&apm_usuario=' + $("#apm_usuario").val(),
+      success: function(data) {
+      if(data.success) {
+            $("#registro_mensaje").html("<h1>Registrado correctamente</h1>");
+      }
+        else {
+            $("#registro_mensaje").html("<h1>Ha ocurrido un error</h1>");
+      }
+      },
+      error: function(data){
+      console.log(data);
+      }
+      });
+    });
 
 
 });
-        </script>
-        <script src="js/bootstrap.min.js"></script>
+</script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
