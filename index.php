@@ -71,13 +71,6 @@ require_once('include/nav.php');
         <script>
 
 $(document).ready(function() {
-  $("#abrir_registro").click(function() {
-      $("#modal_registro").modal();
-  });
-
-  $("#abrir_equipo").click(function() {
-      $("#modal_equipo").modal();
-  });
 
 $("#registro_e").click(function(){
   $.ajax({
