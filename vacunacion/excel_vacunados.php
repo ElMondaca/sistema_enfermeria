@@ -39,8 +39,8 @@ ORDER BY IDVAC";
   <tr>
     <td><center><?=$datos->RUT?></td>
     <td><center><?=utf8_decode($datos->NA)." ".utf8_decode($datos->APA)." ".utf8_decode($datos->AMA)?></td>
-    <td><center><?=$datos->VACUNA?></td>
-    <td><center><?=$datos->FECHAVAC?></td>
+    <td><center><?=utf8_decode($datos->VACUNA)?></td>
+    <td><center><?=utf8_decode($datos->FECHAVAC)?></td>
   </tr>
   <?php
     endwhile;
