@@ -18,27 +18,6 @@
     	$conexion = new conexion();
     	$conexion->conectar();
       $r_alumno = $_GET['id'];
-/*
-      $query = "SELECT certificado.id_certificado, alumno.rut_alumno, alumno.n_alumno, alumno.app_alumno,
-      alumno.apm_alumno, emisor.n_emisor, certificado.diagnostico, certificado.fecha_emision,
-      certificado.fecha_entrega AS Entrega
-      FROM alumno, certificado, emisor, nivel
-      WHERE certificado.n_alumno=alumno.rut_alumno AND certificado.n_nivel=nivel.id_nivel
-      AND certificado.n_emisor=emisor.id_emisor
-      AND alumno.rut_alumno = '$r_alumno'";
-      $q = $conexion->mysqli->query($query);
-      $certificado = $q->fetch_object();
-      ?>
-          <div class="col-lg-4">
-            <legend>Detalle de alumno</legend>
-            <p>Rut Alumno: <?=$certificado->rut_alumno?></p>
-            <p>Nombre: <?=$certificado->n_alumno?></p>
-            <p>Apellido paterno: <?=$certificado->app_alumno?></p>
-            <p>Apellido materno: <?=$certificado->apm_alumno?></p>
-
-          </div>
-        <?php*/
-
         $query2 = "SELECT certificado.id_certificado, alumno.rut_alumno, alumno.n_alumno, alumno.app_alumno,
         alumno.apm_alumno, emisor.n_emisor, certificado.diagnostico, certificado.fecha_emision,
         certificado.fecha_entrega, certificado.detalle_certificado as CERTIFI

@@ -10,14 +10,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </head>
 <body>
-      <?php
-  	require_once('include/nav.php');
-  	?>
-  	<style>
-  		input[type=number] {
-  			max-width: 100px;
-  		}
-  	</style>
+    <?php
+  require_once('include/nav.php');
+  ?>
+  <style>
+    input[type=number] {
+      max-width: 100px;
+    }
+  </style>
     <br><br>
     <div class="container">
         <div class="col-lg-12">
@@ -33,6 +33,11 @@
               </fieldset>
             </form>
           </div>
+          <div class="col-lg-12" id="excel">
+          <div class="col-lg-12" id="boton">
+            <a href="excel_justificaciones.php"><button class="btn btn-primary" id="excel">Descargar listado de justificaciones</button></a></br>
+            </div>
+            </div>
             <div class="col-lg-12" id="alumnos">
             </div>
         </div>

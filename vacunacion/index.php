@@ -28,6 +28,9 @@ require_once('include/nav.php');
         </fieldset>
       </form>
     </div>
+    <div class="col-lg-12" id="excel">
+    <a href="excel_vacunados.php"><button class="btn btn-primary" id="excel">Historial de Vacunas Registradas</button></a></br>
+    </div>
     <legend>Listado de estudiantes</legend>
     <div class="col-lg-12" id="alumnos">
     </div>
