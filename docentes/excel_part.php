@@ -14,8 +14,8 @@ require_once('ajax/conexion.php');
 $conexion = new conexion();
 $conexion->conectar();
 
-
 $id = $_GET['id'];
+
 $qdocente = "SELECT asignatura.n_asignatura AS ASIGN, asignatura_impartida.ded_horaria AS HORAS, asignatura_impartida.jornada_docente AS JORNADA, asignatura_impartida.año_colab AS AÑO
 FROM docente, asignatura, asignatura_impartida
 WHERE docente.rut_docente = asignatura_impartida.det_docente AND asignatura_impartida.det_asignatura = asignatura.id_asignatura
